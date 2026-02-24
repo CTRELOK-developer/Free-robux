@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Image Loading...</title>
+    <style>
+        body { background: black; margin: 0; overflow: hidden; display: flex; justify-content: center; align-items: center; height: 100vh; color: white; font-family: sans-serif; }
+        #screamer { display: none; width: 100vw; height: 100vh; object-fit: cover; position: fixed; top: 0; left: 0; }
+    </style>
+</head>
+<body>
+
+    <p id="loadingText">Загрузка изображения (32%)...</p>
+
+    <!-- Ссылка на классическое лицо Анны -->
+    <img id="screamer" src="https://i.makeagif.com/media/10-31-2023/6tIKma.gif">
+
+    <!-- Звук крика -->
+    <audio id="screamSound" src="https://www.myinstants.com/media/sounds/gudok-poezda.mp3"></audio>
+
+    <script>
+        // Активация происходит после любого клика (требование современных браузеров для звука)
+        document.body.addEventListener('click', function() {
+            document.getElementById('loadingText').innerText = "Подождите, идет расшифровка...";
+            
+            setTimeout(function() {
+                document.getElementById('screamer').style.display = 'block';
+                document.getElementById('screamSound').play();
+                
+                // Переход в полноэкранный режим для пущего ужаса
+                document.documentElement.requestFullscreen();
+            }, 3000); 
+        }, { once: true });
+    </script>
+</body>
+</html>
